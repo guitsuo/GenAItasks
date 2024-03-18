@@ -26,11 +26,12 @@ notebook_login()
 # Check if GPU is set  
 torch.cuda.is_available()
 
-
+# Open source model 
 llm = HuggingFaceEndpoint(repo_id="HuggingFaceH4/zephyr-7b-beta", huggingfacehub_api_token = token)
 
 chat_model = ChatHuggingFace(llm=llm)
 
+# Load tools 
 tools = load_tools(["serpapi", 'llm-math'], serpapi_api_key = serpapi, llm=llm) #,  # , "llm-math"
 
 #setup ReAct style prompt
